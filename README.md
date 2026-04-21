@@ -23,4 +23,4 @@ The main focus of this project is to test invalid login scenarios. The goal is t
 ├── docs/
 │   └── manual-tests/  
 ├── cypress.config.js 
-└── package.json       
+└── package.json      
