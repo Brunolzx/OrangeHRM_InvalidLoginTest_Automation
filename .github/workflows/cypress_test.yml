@@ -1,0 +1,19 @@
+name: Cypress Tests (CI)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
+      - name: Instalar e Correr Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
