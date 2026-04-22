@@ -1,4 +1,4 @@
-import LoginPage from '../pages/LoginPage';
+import LoginPage from '../Pages/LoginPage';
 
 describe('US02 - Invalid Login', () => {
 
