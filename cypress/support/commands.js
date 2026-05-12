@@ -23,3 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Clears cookies, visits the app, logs in as Admin, and waits for the Dashboard.
+// Used by EditUser and CreateUser test suites (cy.login / cy.loginAsAdmin).
+Cypress.Commands.add('login', () => {
+  // Clear cookies, sessionStorage and localStorage so OrangeHRM does not redirect
+  // to a previously visited URL (returnUrl) instead of the dashboard after login.
+  cy.clearAllCookies();
+  cy.clearAllSessionStorage();
+  cy.clearLocalStorage();
+  cy.visit('/');
+  cy.get('input[name="username"]').clear().type('Admin');
+  cy.get('input[name="password"]').clear().type('admin123');
+  cy.get('button[type="submit"]').click();
+  cy.url().should('include', '/dashboard');
+});
+
+Cypress.Commands.add('loginAsAdmin', () => cy.login());

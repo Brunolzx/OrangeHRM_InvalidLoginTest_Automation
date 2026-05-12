@@ -58,6 +58,12 @@ class LoginPage {
     this.elements.usernameInput().should('be.visible');
     this.elements.passwordInput().should('be.visible');
   }
+
+  // Confirms the user was redirected away from the login page after a successful login
+  verifySuccessfulLogin() {
+    cy.url().should('not.include', '/auth/login');
+    cy.url().should('include', '/dashboard');
+  }
 }
 
 export default new LoginPage();

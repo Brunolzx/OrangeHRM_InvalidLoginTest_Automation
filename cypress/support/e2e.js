@@ -15,3 +15,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+// The OrangeHRM application occasionally throws unhandled promise rejections
+// (e.g. "Cannot read properties of undefined (reading 'response')") that are
+// internal to the app and unrelated to the test under execution.
+// Returning false prevents Cypress from failing tests due to these app-level errors.
+Cypress.on('uncaught:exception', () => false);

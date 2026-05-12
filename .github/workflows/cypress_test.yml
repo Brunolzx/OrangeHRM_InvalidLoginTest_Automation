@@ -10,10 +10,24 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do Código
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Instalar e Correr Cypress
+      - name: Install and run Cypress
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
+
+      - name: Upload screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Upload videos on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos

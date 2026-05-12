@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Cypress test artifacts
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Claude Code memory
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
